@@ -1,0 +1,21 @@
+{
+  "name": "station_hero_angular",
+  "version": "0.0.0",
+  "authors": [
+    "Matt Ficke <matthew.ficke@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-resource": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "jquery": "~2.1.4"
+  }
+}
