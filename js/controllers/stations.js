@@ -1,5 +1,5 @@
 (function(){
-  var stationControllers = angular.module('stationControllers', ['ngRoute'])
+  var stationControllers = angular.module('stationControllers', ['ngRoute', 'leaflet-directive'])
 
   stationControllers.controller("stationsController", ['$scope', 'Station', function($scope, Station){
     var self = this;
@@ -9,9 +9,13 @@
       for(var i=0; i<$scope.stations.length; i++){
         var stationLocation = $scope.stations[i].station_name
         $scope.markers["" + stationLocation + "" ] = {
+          group: 'center',
           lat: parseFloat($scope.stations[i].latitude),
           lng: parseFloat($scope.stations[i].longitude),
-          message: $scope.stations[i].station_name
+          message: '<a ng-href="#/stations/' + $scope.stations[i].id + '">' + $scope.stations[i].station_name + '</a>',
+          getMessageScope: function(){
+            return $scope
+          }
         }
       }
     })
@@ -36,9 +40,6 @@
       }
     });
 
-  $scope.$on('leafletDirectiveMap.popupopen', function(event, data){
-    console.log(data)
-  })
   }]);
 
   stationControllers.controller("stationController", ['$routeParams', '$location', 'Station', function($routeParams, $location, Station){

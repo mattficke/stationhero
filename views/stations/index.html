@@ -1,9 +1,3 @@
-
-<leaflet markers="markers" defaults="defaults" event-broadcast="events" lf-center="center" height="480px" width="640px"></leaflet>
-
-
-<div class="stations" ng-repeat="station in stationsCtrl.stations">
-  <div class="stations">
-    <a ng-href="#/stations/{{station.id}}">{{station.station_name}}</a>
-  </div>
+<div ng-controller="stationsController">
+  <leaflet markers="markers" defaults="defaults" event-broadcast="events" lf-center="center" height="480px" width="640px"></leaflet>
 </div>
