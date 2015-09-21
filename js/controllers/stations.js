@@ -24,7 +24,7 @@
       center: {
         lat: 38.90,
         lng: -77.01,
-        zoom: 12
+        zoom: 12,
       },
       defaults: {
         tileLayer: 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWF0dGZpY2tlIiwiYSI6ImJkN2FkOTFjNDM4OGQzNWUyYzY3NjU4ODM4ZDYwNDJmIn0.FLniij4ORShXSqRe6pcw-A'
