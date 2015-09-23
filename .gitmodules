@@ -1,3 +1,0 @@
-[submodule "docs/api"]
-	path = docs/api
-	url = git@github.com:mattficke/slate.git
