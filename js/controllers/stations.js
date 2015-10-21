@@ -1,5 +1,5 @@
 (function(){
-  var stationControllers = angular.module('stationControllers', ['ngRoute', 'leaflet-directive'])
+  var stationControllers = angular.module('stationControllers', ['leaflet-directive'])
 
   stationControllers.controller("stationsController", ['$scope', 'Station', function($scope, Station){
     var self = this;
@@ -12,13 +12,17 @@
           group: 'center',
           lat: parseFloat($scope.stations[i].latitude),
           lng: parseFloat($scope.stations[i].longitude),
-          message: '<a ng-href="#/stations/' + $scope.stations[i].id + '">' + $scope.stations[i].station_name + '</a>',
+          message: '<button ng-click="stationsCtrl.showStation('+ $scope.stations[i].id + ')">show info</button>',
           getMessageScope: function(){
             return $scope
           }
         }
       }
     })
+
+    this.showStation = function(id){
+      this.station = Station.get({id: id})
+    };
 
     angular.extend($scope, {
       center: {
