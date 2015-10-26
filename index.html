@@ -25,6 +25,7 @@
   <h1><a ng-href="/stationhero">Station Hero</a></h1>
 
   <div ng-controller="stationsController as stationsCtrl">
+    <button ng-click="stationsCtrl.drawMarkers()">Refresh</button>
     <leaflet markers="markers" defaults="defaults" event-broadcast="events" lf-center="center" height="480px" width="640px"></leaflet>
 
     <div class="station" ng-show="stationsCtrl.station">
