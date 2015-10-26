@@ -1,18 +1,28 @@
 (function(){
   var stationControllers = angular.module('stationControllers', ['leaflet-directive'])
 
-  stationControllers.controller("stationsController", ['$scope', 'Station', function($scope, Station){
+  stationControllers.controller("stationsController", ['$scope', 'Station', 'Status', function($scope, Station, Status){
     var self = this;
-    this.stations = Station.query()
+    this.stations = Status.query();
+    var stationIds = Station.query();
     this.stations.$promise.then(function(result){
       $scope.stations = result;
       for(var i=0; i<$scope.stations.length; i++){
-        var stationLocation = $scope.stations[i].station_name
-        $scope.markers["" + stationLocation + "" ] = {
+        var station = $scope.stations[i]
+
+        // match the cabi_id to the database id
+        var stationId = stationIds.filter(function(station){
+          return station.cabi_id == $scope.stations[i].id
+        })
+
+        $scope.markers["" + station.name + "" ] = {
           group: 'center',
-          lat: parseFloat($scope.stations[i].latitude),
-          lng: parseFloat($scope.stations[i].longitude),
-          message: '<button ng-click="stationsCtrl.showStation('+ $scope.stations[i].id + ')">show info</button>',
+          lat: parseFloat(station.lat),
+          lng: parseFloat(station.long),
+          message: '<h3>' + station.name + '</h3>' +
+                    '<div>Available Bikes: ' + station.nbBikes + '</div>' +
+                    '<div>Empty Bike Docks: ' + station.nbEmptyDocks + '</div>' +
+                    '<button ng-click="stationsCtrl.showStation('+ stationId[0].id + ')">show prediction</button>',
           getMessageScope: function(){
             return $scope
           }
