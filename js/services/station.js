@@ -4,4 +4,9 @@
   stationServices.factory('Station', ['$resource', function($resource) {
     return $resource('http://104.236.23.213/stations/:id');
   }]);
+
+  stationServices.factory('Status', ['$resource', function($resource) {
+    return $resource('http://104.236.23.213/stations/status');
+  }]);
+
 })();
