@@ -5,8 +5,10 @@
     var self = this;
 
     this.drawMarkers = function(){
+      // reset map info
       this.station = undefined;
       $scope.markers = {}
+
       self.stations = Status.query();
       var stationIds = Station.query();
       self.stations.$promise.then(function(result){
@@ -53,8 +55,8 @@
       },
       events: {
         map: {
-          enable: ['popupopen'],
-          logic: 'emit'
+          // enable: ['popupopen'],
+          // logic: 'emit'
         }
       }
     });
